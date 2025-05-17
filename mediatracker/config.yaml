@@ -4,20 +4,18 @@ slug: "mediatracker"
 name: "MediaTracker"
 description: "Self-hosted media tracker for movies and TV shows"
 arch:
-  - "amd64"
-  - "armv7"
-  - "arm64"
+  - amd64
+  - armv7
+  - arm64
 startup: "services"
 init: false
-ports:
-  4020/tcp: 4020
 boot: "auto"
+ports:
+  4020/tcp: 8080
 options:
   port: 4020
 schema:
   port: int
 map:
   config: true
-command: ["/bin/sh", "-c", "/app/mediatracker --port ${PORT:-4020}"]
-
-
+command: ["/bin/bash", "/app/run.sh"]
