@@ -11,7 +11,7 @@ startup: "services"
 init: false
 boot: "auto"
 ports:
-  4020/tcp: 8080
+  4020/tcp: 7481
 options:
   port: 4020
 schema:
