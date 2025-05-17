@@ -19,3 +19,5 @@ schema:
 map:
   config: true
 command: ["/bin/sh", "-c", "/app/mediatracker --port ${PORT:-4020}"]
+
+
