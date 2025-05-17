@@ -1,0 +1,25 @@
+---
+version: "1.0"
+slug: "mediatracker"
+name: "MediaTracker"
+description: "Self-hosted media tracker for movies and TV shows"
+arch:
+  - "amd64"
+  - "armv7"
+  - "arm64"
+startup: "services"
+init: false
+ports:
+  4020/tcp: 4020
+boot: "auto"
+options:
+  port: 4020
+schema:
+  port: int
+map:
+  config: true
+  ssl: false
+  media: false
+  share: false
+  addons: false
+command: ["/bin/bash", "/app/run.sh"]
