@@ -1,0 +1,9 @@
+name: "Ovenlade Home Assistant Add-ons"
+description: "Een verzameling van zelfgemaakte Home Assistant add-ons, inclusief MediaTracker."
+maintainers:
+  - name: "Ovenlade"
+    email: "jouw-email@example.com"
+    url: "https://github.com/ovenlade"
+url: "https://github.com/ovenlade/hassio-addons"
+license: "MIT"
+homepage: "https://github.com/ovenlade/hassio-addons"
