@@ -6,7 +6,7 @@ description: "Self-hosted media tracker for movies and TV shows"
 arch:
   - amd64
   - armv7
-  - arm64
+  - aarch64
 startup: "services"
 init: false
 boot: "auto"
