@@ -18,8 +18,4 @@ schema:
   port: int
 map:
   config: true
-  ssl: false
-  media: false
-  share: false
-  addons: false
-command: ["/bin/bash", "/app/run.sh"]
+command: ["/bin/sh", "-c", "/app/mediatracker --port ${PORT:-4020}"]
