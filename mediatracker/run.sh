@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
-exec /app/mediatracker --port ${PORT:-4020}
+#!/usr/bin/env bash
+/app/MediaTracker --host 0.0.0.0 --port 7481
