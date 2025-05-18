@@ -8,4 +8,4 @@ fi
 
 
 # Start MediaTracker op de gewenste poort en sla data op in /data
-/app/MediaTracker --host 0.0.0.0 --port 7481 --storage /data/mediatracker
+/app/MediaTracker --host 0.0.0.0 --port 7481 --dataPath /data/mediatracker
