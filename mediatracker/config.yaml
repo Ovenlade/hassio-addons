@@ -1,8 +1,8 @@
 ---
-version: "1.0.10"
+version: "1.0.11"
 slug: "mediatracker"
 name: "MediaTracker"
-description: "Self-hosted media tracker for movies, TV shows, books, audiobooks and games.(10)"
+description: "Self-hosted media tracker for movies, TV shows, books, audiobooks and games.(11)"
 arch:
   - amd64
   - armv7
