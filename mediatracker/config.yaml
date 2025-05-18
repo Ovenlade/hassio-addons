@@ -1,5 +1,5 @@
 ---
-version: "1.0.6"
+version: "1.0.7"
 slug: "mediatracker"
 name: "MediaTracker"
 description: "Self-hosted media tracker for movies and TV shows"
@@ -16,4 +16,6 @@ ports_description:
   7481/tcp: Web interface
 map:
   config: true
+  ssl: false
+  data: true
 command: ["/bin/bash", "/app/run.sh"]
