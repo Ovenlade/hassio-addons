@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-/app/MediaTracker --host 0.0.0.0 --port 7481
+
+# Start MediaTracker op de gewenste poort en sla data op in /data
+/app/MediaTracker --host 0.0.0.0 --port 7481 --dataPath /data
