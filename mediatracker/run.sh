@@ -16,13 +16,13 @@ export DATABASE_CLIENT="$(bashio::config 'database_client')"
 
 # Handle database path for sqlite
 if [ "$(bashio::config 'database_client')" = "better-sqlite3" ]; then
-    DATABASE_PATH="$(bashio::config 'database_path')"
-    if [ -z "$DATABASE_PATH" ]; then
+    DATABASE_PATH_RAW="$(bashio::config 'database_path')"
+    if [ -z "$DATABASE_PATH_RAW" ]; then
         bashio::log.fatal "database_path is required when database_client is better-sqlite3"
         exit 1
     fi
     # Get filename only to ensure it always goes into /data/
-    DB_FILE="${DATABASE_PATH##*/}"
+    DB_FILE="${DATABASE_PATH_RAW##*/}"
     export DATABASE_PATH="/data/${DB_FILE}"
 fi
 
@@ -56,6 +56,6 @@ bashio::log.info "  LOG_LEVEL: ${LOG_LEVEL}"
 # Set NODE_ENV to production as per MediaTracker's package.json
 export NODE_ENV=production
 
-# IMPORTANT: Change directory to the 'server' folder and execute the actual Node.js command
-cd /app/server
+# Change directory to the 'server' folder and execute the actual Node.js command
+cd /app/server || { bashio::log.fatal "Failed to change directory to /app/server"; exit 1; }
 exec node build/index.js
