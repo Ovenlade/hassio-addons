@@ -1,18 +1,25 @@
-# Basisimage van MediaTracker
-FROM bonukai/mediatracker:latest
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-# Zet de werkdirectory naar de applicatiemap
+# Install Node.js and other necessary tools
+RUN apk add --no-cache nodejs npm git
+
+# Set working directory
 WORKDIR /app
 
-# Zorg dat de nodige tools aanwezig zijn
-RUN apk add --no-cache bash jq
+# Clone MediaTracker repository
+RUN git clone https://github.com/bonukai/MediaTracker.git .
 
-# Expose de standaard poort
+# Install dependencies and build MediaTracker
+RUN npm install
+RUN npm run build
+
+# Copy run script
+COPY run.sh /usr/bin/run.sh
+RUN chmod a+x /usr/bin/run.sh
+
+# Expose MediaTracker port (default is 7481)
 EXPOSE 7481
 
-# Kopieer het startscript naar de container
-COPY run.sh /app/run.sh
-RUN chmod +x /app/run.sh
-
-# Start het script
-CMD ["/bin/bash", "/app/run.sh"]
+# Command to run MediaTracker
+CMD [ "/usr/bin/run.sh" ]
