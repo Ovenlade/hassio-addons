@@ -1,21 +1,30 @@
----
-version: "1.0.14"
-slug: "mediatracker"
 name: "MediaTracker"
-description: "Self-hosted media tracker for movies, TV shows, books, audiobooks and games.(14)"
+version:  "1.0.15" # Pas dit aan met de versie van je add-on
+slug: "mediatracker"
+description: "Self-hosted media tracker for movies, TV shows, video games, books, and audiobooks.(15)"
+url: "https://github.com/bonukai/MediaTracker"
 arch:
-  - amd64
-  - armv7
   - aarch64
-startup: "services"
-init: false
-boot: "auto"
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: application
 ports:
-  7481/tcp: NULL
-ports_description:
-  7481/tcp: Web interface
-map:
-  config: true
-  ssl: false
-  data: true
-command: ["/bin/bash", "/app/run.sh"]
+  7481/tcp: 7481 # Poort voor MediaTracker webinterface
+options:
+  server_lang: "en"
+  tmdb_lang: "en"
+  audible_lang: "us"
+  tz: "Europe/Amsterdam" # Pas dit aan naar je eigen tijdzone
+  database_client: "better-sqlite3"
+  database_path: "/data/mediatracker.db"
+schema:
+  server_lang: list(en|da|de|es|fr|ko|pt)
+  tmdb_lang: list(en|da|de|es|fr|ko|pt)
+  audible_lang: list(au|ca|de|es|fr|in|it|jp|gb|us)
+  tz: str # Timezone string, e.g., "Europe/Amsterdam"
+  database_client: list(better-sqlite3|pg)
+  database_path: str? # Optional, only for sqlite
+  database_url: str? # Optional, for PostgreSQL
+  log_level: list(debug|info|warning|error|fatal) # Standaard toegevoegd voor debugging
