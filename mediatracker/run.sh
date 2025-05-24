@@ -21,9 +21,9 @@ if [ "$(bashio::config 'database_client')" = "better-sqlite3" ]; then
         bashio::log.fatal "database_path is required when database_client is better-sqlite3"
         exit 1
     fi
-    # Ensure database is in /data for persistence, remove leading slash if present
-    DB_FILE="${DATABASE_PATH##*/}" # Get filename only
-    export DATABASE_PATH="/data/${DB_FILE}" # Ensure database is in /data for persistence
+    # Get filename only to ensure it always goes into /data/
+    DB_FILE="${DATABASE_PATH##*/}"
+    export DATABASE_PATH="/data/${DB_FILE}"
 fi
 
 # Handle database URL for postgres
@@ -53,5 +53,9 @@ else
 fi
 bashio::log.info "  LOG_LEVEL: ${LOG_LEVEL}"
 
-# Use 'exec' to ensure npm run start becomes PID 1
-exec npm run start
+# Set NODE_ENV to production as per MediaTracker's package.json
+export NODE_ENV=production
+
+# IMPORTANT: Change directory to the 'server' folder and execute the actual Node.js command
+cd /app/server
+exec node build/index.js
