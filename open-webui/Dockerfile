@@ -19,5 +19,3 @@ ENV DATA_DIR=/data
 COPY open-webui/run.sh .
 RUN chmod a+x run.sh
 
-# Run the wrapper script on startup
-# CMD [ "/run.sh" ]
