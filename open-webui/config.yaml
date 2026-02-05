@@ -10,7 +10,7 @@ arch:
   - aarch64
   - amd64
 
-image: ghcr.io/open-webui/open-webui:latest
+image: ghcr.io/mikastamm/open-webui-homeassistant-addon:latest
 
 startup: services
 webui: "[PROTO:ssl]://[HOST]:[PORT:8080]"
