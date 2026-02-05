@@ -19,7 +19,7 @@ ports_description:
 map:
   - share
 environment:
-  JWT_EXPIRES_IN: "300"
+  JWT_EXPIRES_IN: "5m"
 options: {}
 schema: {}
 image: ghcr.io/mikastamm/open-webui-homeassistant-addon
