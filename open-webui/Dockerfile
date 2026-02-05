@@ -16,6 +16,5 @@ EXPOSE 8080
 
 ENV DATA_DIR=/data
 
-COPY open-webui/run.sh .
+COPY run.sh .
 RUN chmod a+x run.sh
-
