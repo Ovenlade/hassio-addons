@@ -1,18 +1,17 @@
 name: "Open WebUI"
 description: "Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline"
-url: https://github.com/mikastamm/open-webui-homeassistant-addon
-version: "v0.7.3"
+url: https://github.com/ovenlade/hassio-addons
+version: "v0.7.4"
 slug: "openwebui-custom"
 panel_icon: mdi:message
 init: false
 
-build_from:
-  aarch64: ghcr.io/open-webui/open-webui:main
-  amd64: ghcr.io/open-webui/open-webui:main
-
 arch:
   - aarch64
   - amd64
+
+image: ghcr.io/open-webui/open-webui:latest
+
 startup: services
 webui: "[PROTO:ssl]://[HOST]:[PORT:8080]"
 host_network: true
@@ -24,5 +23,6 @@ map:
   - share
 environment:
   JWT_EXPIRES_IN: "5m"
+  DATA_DIR: "/data"
 options: {}
 schema: {}
