@@ -1,18 +1,7 @@
-cd /tmp/hassio-addons/open-webui
-
-cat > run.sh << 'EOF'
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
-echo "Starting Open WebUI with custom settings..."
-echo "JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}"
-
-# Export environment variables
-export JWT_EXPIRES_IN="${JWT_EXPIRES_IN:-5m}"
-export DATA_DIR="${DATA_DIR:-/data}"
-
-# Start Open WebUI
-exec bash /app/backend/start.sh
-EOF
-
-chmod +x run.sh
+echo "Starting Open WebUI..."
+# The environment variables from config.yaml are automatically available.
+# We just need to execute the original startup command.
+exec /usr/bin/tini -g -- bash /app/backend/start.sh
